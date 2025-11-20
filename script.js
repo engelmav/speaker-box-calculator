@@ -427,8 +427,15 @@ EOF`;
 
     parseBtn.addEventListener('click', async function() {
         const text = document.getElementById('pasteText').value.trim();
+        const apiKey = document.getElementById('apiKey').value.trim();
+        
         if (!text) {
             results.innerHTML = '<p style="color: red;">Please paste some text to parse!</p>';
+            return;
+        }
+        
+        if (!apiKey) {
+            results.innerHTML = '<p style="color: red;">Please enter your OpenRouter API key!</p>';
             return;
         }
 
@@ -436,7 +443,7 @@ EOF`;
         parseBtn.disabled = true;
 
         try {
-            const params = await parseWithOpenRouter(text);
+            const params = await parseWithOpenRouter(text, apiKey);
             if (params.fs) document.getElementById('fs').value = params.fs;
             if (params.qts) document.getElementById('qts').value = params.qts;
             if (params.vas) document.getElementById('vas').value = params.vas;
@@ -450,11 +457,11 @@ EOF`;
         parseBtn.disabled = false;
     });
 
-    async function parseWithOpenRouter(text) {
+    async function parseWithOpenRouter(text, apiKey) {
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer YOUR_API_KEY_HERE',
+                'Authorization': `Bearer ${apiKey}`,
                 'HTTP-Referer': 'http://localhost',
                 'X-Title': 'Speaker Calculator',
                 'Content-Type': 'application/json'
