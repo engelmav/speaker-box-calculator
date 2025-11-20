@@ -19,6 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initSQLite();
     initThreeJS();
+    
+    // Load saved API key
+    const savedApiKey = localStorage.getItem('openrouterApiKey');
+    if (savedApiKey) {
+        document.getElementById('apiKey').value = savedApiKey;
+    }
+    
+    // Save API key when changed
+    document.getElementById('apiKey').addEventListener('input', function() {
+        localStorage.setItem('openrouterApiKey', this.value);
+    });
 
     // Real-time dimension adjustment
     boxWidthInput.addEventListener('input', updateBoxAndDxf);
