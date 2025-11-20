@@ -454,7 +454,7 @@ EOF`;
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer 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',
+                'Authorization': 'Bearer YOUR_API_KEY_HERE',
                 'HTTP-Referer': 'http://localhost',
                 'X-Title': 'Speaker Calculator',
                 'Content-Type': 'application/json'
