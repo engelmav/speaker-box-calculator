@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Box Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Speaker Box Calculator</h1>
+        
+        <h2>Load Saved Calculation</h2>
+        <select id="savedList">
+            <option value="">Load saved calculation...</option>
+        </select>
+        <button id="deleteBtn">Delete Selected</button>
+        
+        <h2>Parse from Text</h2>
+        <textarea id="pasteText" placeholder="Paste speaker specs from Parts Express or other source..."></textarea>
+        <button id="parseBtn">Parse Parameters</button>
+        
+        <h2>T/S Parameters</h2>
+        <input type="number" id="fs" placeholder="Fs (Hz)" step="0.1">
+        <input type="number" id="qts" placeholder="Qts" step="0.01">
+        <input type="number" id="vas" placeholder="Vas (liters)" step="0.1">
+        
+        <h2>Enclosure Type</h2>
+        <select id="enclosureType">
+            <option value="sealed">Sealed</option>
+            <option value="ported">Ported</option>
+        </select>
+        
+        <button id="calculateBtn">Calculate</button>
+        <div id="results"></div>
+        
+        <h2>3D Visualization</h2>
+        <label><span>Width:</span><input type="number" id="boxWidth" value="20" step="0.1"></label>
+        <label><span>Height:</span><input type="number" id="boxHeight" value="32" step="0.1"></label>
+        <label><span>Depth:</span><input type="number" id="boxDepth" value="18" step="0.1"></label>
+        <label><span>Driver (cm):</span><input type="number" id="driverSize" value="12" step="0.5"></label>
+        <div id="canvas-container"></div>
+        
+        <h2>Save Current Calculation</h2>
+        <input type="text" id="saveName" placeholder="Save as...">
+        <button id="saveBtn">Save Calculation</button>
+        <button id="exportDxfBtn">Export DXF</button>
+        
+        <details>
+            <summary>DXF Content (Click to expand)</summary>
+            <textarea id="dxfContent" readonly placeholder="DXF content will appear here..."></textarea>
+            <button id="copyDxfBtn">Copy DXF</button>
+        </details>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

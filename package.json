@@ -1,0 +1,13 @@
+{
+  "name": "speaker-box-calculator",
+  "version": "1.0.0",
+  "description": "Speaker box calculator with 3D visualization and DXF export",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": ["speaker", "calculator", "audio", "3d", "dxf"],
+  "author": "",
+  "license": "MIT"
+}
